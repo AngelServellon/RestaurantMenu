@@ -1,0 +1,12 @@
+﻿@model IEnumerable<RestaurantMenu.Models.MealIngredient>
+
+<ul>
+    @foreach (var item in Model)
+    {
+        <li>
+            @item.Quantity @RestaurantMenu.Controllers.MealController.NombreIngrediente(item.id_Ingredient)
+        </li>
+    }
+</ul>
+
+

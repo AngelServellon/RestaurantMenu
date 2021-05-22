@@ -1,0 +1,20 @@
+﻿@model RestaurantMenu.Models.Meal
+
+@{
+    ViewBag.Title = "DetallesMeal";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>DetallesMeal</h2>
+
+<div class="row">
+    <div class="col-sm-12 col-md-3">
+        <img src="@RestaurantMenu.Controllers.MealController.MealImage(Model.Id_Meal)" alt="Alternate Text" />
+        <br />
+        <p><b>Category: </b>@Model.Category.Name</p>
+    </div>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id_Meal }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
