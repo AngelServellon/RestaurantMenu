@@ -6,14 +6,14 @@
 }
 
 <h2>Categories</h2>
-<br />
+<br /><br />
 
 <div class="row">
     @foreach (var item in Model)
     {
         <div class="col-sm-2 col-md-4">
-            <img src="@RestaurantMenu.Controllers.CategoryController.CategoryImage(item.Id_Category)" alt="Alternate Text" />
-            <h3 class="text-center">@Html.ActionLink(@RestaurantMenu.Controllers.CategoryController.CategoryName(item.Id_Category), "DetallesMeal", new { id = item.Id_Category })</h3>
+            <img width="300" src="@RestaurantMenu.Controllers.CategoryController.CategoryImage(item.Id_Category)" alt="Alternate Text" />
+            <h3 class="text-center">@Html.ActionLink(@RestaurantMenu.Controllers.CategoryController.CategoryName(item.Id_Category), "CategoryMeals", new { id = item.Id_Category })</h3>
         </div>
     }
 </div>

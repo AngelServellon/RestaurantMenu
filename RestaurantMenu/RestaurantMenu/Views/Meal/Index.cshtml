@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Meals</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -18,14 +18,14 @@
         <th>
             @Html.DisplayNameFor(model => model.Image)
         </th>
-        <th>
+        <th width="300">
             @Html.DisplayNameFor(model => model.Preparation)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Area.Name)
+            Area
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Category.Name)
+            Category
         </th>
         <th>
             Ingredientes
@@ -39,9 +39,9 @@
             @Html.DisplayFor(modelItem => item.Name)
         </td>
         <td>
-            <img src="@RestaurantMenu.Controllers.MealController.MealImage(item.Id_Meal)" alt="Alternate Text" />
+            <img width="200" src="@RestaurantMenu.Controllers.MealController.MealImage(item.Id_Meal)" alt="Alternate Text" />
         </td>
-        <td>
+        <td width="300">
             @Html.DisplayFor(modelItem => item.Preparation)
         </td>
         <td>

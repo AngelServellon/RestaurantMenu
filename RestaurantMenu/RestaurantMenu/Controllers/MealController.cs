@@ -25,7 +25,7 @@ namespace RestaurantMenu.Controllers
                 return PartialView(lista);
             }
         }
-        //Poner el nombre de cada ingrediente
+        //Obtener el nombre de cada ingrediente
         public static string NombreIngrediente(int id_ingredient)
         {
             using (var db = new RestaurantMenuContext())
@@ -33,8 +33,8 @@ namespace RestaurantMenu.Controllers
                 return db.Ingredient.Find(id_ingredient).Name;
             }
         }
-        
-        //Imagen de Meal
+
+        //Obtener imagen de Meal
         public static string MealImage(int id)
         {
             using (var db = new RestaurantMenuContext())
@@ -42,5 +42,24 @@ namespace RestaurantMenu.Controllers
                 return db.Meal.Find(id).Image;
             }
         }
+        
+        //Obtener nombre de la categoria
+        public static string MealName(int id)
+        {
+            using (var db = new RestaurantMenuContext())
+            {
+                return db.Meal.Find(id).Name;
+            }
+        }
+        //Obtener el nombre del Area
+        public static string AreaName(int id)
+        {
+            using (var db = new RestaurantMenuContext())
+            {
+                return db.Area.Find(id).Name;
+            }
+        }
+
+
     }
 }

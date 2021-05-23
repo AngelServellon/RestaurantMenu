@@ -15,6 +15,7 @@ namespace RestaurantMenu.Controllers
             RestaurantMenuContext db = new RestaurantMenuContext();
             return View(db.Category.ToList());
         }
+        //Obtener  la imagen de la categoria
         public static string CategoryImage(int id)
         {
             using (var db = new RestaurantMenuContext())
@@ -22,6 +23,7 @@ namespace RestaurantMenu.Controllers
                 return db.Category.Find(id).Image;
             }
         }
+        //Obtener nombre de la categoria
         public static string CategoryName(int id)
         {
             using (var db = new RestaurantMenuContext())
@@ -38,6 +40,27 @@ namespace RestaurantMenu.Controllers
                 return View(meal);
             }
         }
+        //Mostra Meals segun su categoria
+        public ActionResult CategoryMeals(int id)
+        {
+            using (var db = new RestaurantMenuContext())
+            {
+                List<Meal> meals = db.Meal.Where(a => a.id_Category == id).ToList();
+                return View(meals);
+            }
+        }
+
+
+        //Vista parcial para mostrar los ingredientes de una comida
+        public ActionResult SpecificMealIngredients(int id)
+        {
+            using (var db = new RestaurantMenuContext())
+            {
+                List<MealIngredient> lista = db.MealIngredient.Where(a => a.id_Meal == id).ToList();
+                return PartialView(lista);
+            }
+        }
         
+
     }
 }

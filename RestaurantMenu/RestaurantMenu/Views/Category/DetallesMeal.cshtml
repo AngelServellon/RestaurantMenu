@@ -1,0 +1,25 @@
+﻿@model RestaurantMenu.Models.Meal
+
+@{
+    ViewBag.Title = "DetallesMeal";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br /><br />
+<div class="row">
+    <div class="col-sm-12 col-md-3">
+        <img class="img-responsive" src="@RestaurantMenu.Controllers.MealController.MealImage(Model.Id_Meal)" alt="Alternate Text" />
+        <br /><br />
+        <p><b>Category: </b>@RestaurantMenu.Controllers.CategoryController.CategoryName(Model.id_Category)</p>
+        <p><b>Area: </b>@RestaurantMenu.Controllers.MealController.AreaName(Model.id_Area)</p>
+    </div>
+    <div class="col-sm-12 col-md-9">
+        <h3>@Html.DisplayFor(model => model.Name)</h3><br />
+
+        <h4>Ingredients</h4>
+        @Html.Action("SpecificMealIngredients", new { id = Model.Id_Meal })<br />
+        <h4>How to cook?</h4>
+        <p>@Html.DisplayFor(model => model.Preparation)</p>
+    </div>
+</div>
+

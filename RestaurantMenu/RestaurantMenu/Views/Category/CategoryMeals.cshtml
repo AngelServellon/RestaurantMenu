@@ -1,0 +1,20 @@
+﻿@model IEnumerable<RestaurantMenu.Models.Meal>
+
+@{
+    ViewBag.Title = "CategoryMeals";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Meals</h2>
+<br />
+<br />
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-sm-2 col-md-4">
+            <img width="300" src="@RestaurantMenu.Controllers.MealController.MealImage(item.Id_Meal)" alt="Alternate Text" />
+            <h3 class="text-center">@Html.ActionLink(@RestaurantMenu.Controllers.MealController.MealName(item.Id_Meal), "DetallesMeal", new { id = item.Id_Meal })</h3>
+        </div>
+    }
+</div>

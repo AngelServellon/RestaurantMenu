@@ -228,11 +228,12 @@
     <Content Include="Views\Meal\Index.cshtml" />
     <Content Include="Views\Meal\MealIngrediants.cshtml" />
     <Content Include="Views\Category\Index.cshtml" />
-    <Content Include="Views\Meal\DetallesMeal.cshtml" />
+    <Content Include="Views\Category\DetallesMeal.cshtml" />
+    <Content Include="Views\Category\CategoryMeals.cshtml" />
+    <Content Include="Views\Category\SpecificMealIngredients.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\MealIngredient\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
