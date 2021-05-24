@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<RestaurantMenu.Models.Meal>
 
 @{
-    ViewBag.Title = "CategoryMeals";
+    ViewBag.Title = "IngredientMeals";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -14,7 +14,7 @@
     {
         <div class="col-sm-12 col-md-3">
             <img class="img-responsive" src="@RestaurantMenu.Controllers.MealController.MealImage(item.Id_Meal)" alt="Alternate Text" />
-            <h3 class="text-center">@Html.ActionLink(@RestaurantMenu.Controllers.MealController.MealName(item.Id_Meal), "DetallesMeal", new { id = item.Id_Meal })</h3>
+            <h3 class="text-center">@Html.ActionLink(@RestaurantMenu.Controllers.MealController.MealName(item.Id_Meal), "DetallesMeal", "Category", new { id = item.Id_Meal }, null)</h3>
         </div>
     }
 </div>

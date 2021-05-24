@@ -11,7 +11,7 @@
 <div class="row">
     @foreach (var item in Model)
     {
-        <div class="col-sm-2 col-md-4">
+        <div class="col-sm-12 col-md-3">
             <img class="img-responsive" src="@RestaurantMenu.Controllers.CategoryController.CategoryImage(item.Id_Category)" alt="Alternate Text" />
             <h3 class="text-center">@Html.ActionLink(@RestaurantMenu.Controllers.CategoryController.CategoryName(item.Id_Category), "CategoryMeals", new { id = item.Id_Category })</h3>
         </div>

@@ -31,15 +31,6 @@ namespace RestaurantMenu.Controllers
                 return db.Category.Find(id).Name;
             }
         }
-        //Detalles de Meal
-        public ActionResult DetallesMeal(int id)
-        {
-            using (var db = new RestaurantMenuContext())
-            {
-                Meal meal = db.Meal.Find(id);
-                return View(meal);
-            }
-        }
         //Mostra Meals segun su categoria
         public ActionResult CategoryMeals(int id)
         {
@@ -47,6 +38,15 @@ namespace RestaurantMenu.Controllers
             {
                 List<Meal> meals = db.Meal.Where(a => a.id_Category == id).ToList();
                 return View(meals);
+            }
+        }
+        //Detalles de Meal
+        public ActionResult DetallesMeal(int id)
+        {
+            using (var db = new RestaurantMenuContext())
+            {
+                Meal meal = db.Meal.Find(id);
+                return View(meal);
             }
         }
 
