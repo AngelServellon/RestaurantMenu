@@ -16,7 +16,7 @@ namespace RestaurantMenu.Controllers
             return View(db.Meal.ToList());
         }
 
-        //Vista parcial para mostrar los ingredientes de una comida
+        //Vista parcial para mostrar los ingredientes de una comida cuando todas son listadas
         public ActionResult MealIngrediants(int id)
         {
             using (var db = new RestaurantMenuContext())
@@ -57,6 +57,24 @@ namespace RestaurantMenu.Controllers
             using (var db = new RestaurantMenuContext())
             {
                 return db.Area.Find(id).Name;
+            }
+        }
+
+        //Vista parcial para ver los tags de cad Meal
+        public ActionResult AllMealsTags(int id)
+        {
+            using (var db = new RestaurantMenuContext())
+            {
+                List<MealTag> tags = db.MealTag.Where(a => a.id_Meal == id).ToList();
+                return PartialView(tags);
+            }
+        }
+        //Obtener nombre de cada Tag
+        public static string NameTag(int id_tag)
+        {
+            using (var db = new RestaurantMenuContext())
+            {
+                return db.Tag.Find(id_tag).Name;
             }
         }
 

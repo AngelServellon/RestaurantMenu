@@ -1,0 +1,10 @@
+﻿@model IEnumerable<RestaurantMenu.Models.MealTag>
+
+<ul>
+    @foreach (var item in Model)
+    {
+        <li>
+            @RestaurantMenu.Controllers.MealController.NameTag(item.id_Tag)
+        </li>
+    }
+</ul>

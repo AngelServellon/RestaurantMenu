@@ -12,6 +12,8 @@
         <br /><br />
         <p><b>Category: </b>@RestaurantMenu.Controllers.CategoryController.CategoryName(Model.id_Category)</p>
         <p><b>Area: </b>@RestaurantMenu.Controllers.MealController.AreaName(Model.id_Area)</p>
+        <p><b>Tags: </b></p>
+        @Html.Action("MealTags", new { id = Model.Id_Meal })
     </div>
     <div class="col-sm-12 col-md-9">
         <h3>@Html.DisplayFor(model => model.Name)</h3><br />

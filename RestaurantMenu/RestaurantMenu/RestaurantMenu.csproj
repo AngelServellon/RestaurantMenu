@@ -231,6 +231,8 @@
     <Content Include="Views\Category\DetallesMeal.cshtml" />
     <Content Include="Views\Category\CategoryMeals.cshtml" />
     <Content Include="Views\Category\SpecificMealIngredients.cshtml" />
+    <Content Include="Views\Category\MealTags.cshtml" />
+    <Content Include="Views\Meal\AllMealsTags.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

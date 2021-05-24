@@ -60,7 +60,16 @@ namespace RestaurantMenu.Controllers
                 return PartialView(lista);
             }
         }
-        
 
+        //Vista parcial para ver los tags de un Meal
+        public ActionResult MealTags(int id)
+        {
+            using (var db = new RestaurantMenuContext())
+            {
+                List<MealTag> tags = db.MealTag.Where(a => a.id_Meal == id).ToList();
+                return PartialView(tags);
+            }
+        }
+        
     }
 }
