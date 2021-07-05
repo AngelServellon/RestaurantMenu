@@ -7,9 +7,9 @@
 
 <h2>Meals</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+@*<p>
+    @Html.ActionLink("New meal", "AgregarMeal")
+</p>*@
 <table class="table">
     <tr>
         <th>
@@ -59,11 +59,10 @@
         <td>
             @Html.Action("MealIngrediants", new { id = item.Id_Meal })
         </td>
-        <td>
+        @*<td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id_Meal }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id_Meal }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.Id_Meal })
-        </td>
+        </td>*@
     </tr>
 }
 

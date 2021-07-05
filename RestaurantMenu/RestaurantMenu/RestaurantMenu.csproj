@@ -234,6 +234,13 @@
     <Content Include="Views\Category\SpecificMealIngredients.cshtml" />
     <Content Include="Views\Category\MealTags.cshtml" />
     <Content Include="Views\Meal\AllMealsTags.cshtml" />
+    <Content Include="Views\Meal\AgregarMeal.cshtml" />
+    <Content Include="Views\Meal\ListarCategorias.cshtml" />
+    <Content Include="Views\Meal\ListarAreas.cshtml" />
+    <Content Include="Views\Meal\AgregarIngredientes.cshtml" />
+    <Content Include="Views\Meal\ListarComidas.cshtml" />
+    <Content Include="Views\Meal\ListarIngredientes.cshtml" />
+    <Content Include="Views\Ingredient\CrearIngrediente.cshtml" />
     <Content Include="Views\Ingredient\Index.cshtml" />
     <Content Include="Views\Ingredient\IngredientMeals.cshtml" />
   </ItemGroup>

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="RestaurantMenuModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="RestaurantMenuModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Area">
           <Key>
             <PropertyRef Name="Id_Area" />
@@ -169,63 +169,95 @@
             <End Role="MealTag" EntitySet="MealTag" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="RestaurantMenuModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="RestaurantMenuContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Area" EntityType="RestaurantMenuModel.Area" />
+          <EntitySet Name="Category" EntityType="RestaurantMenuModel.Category" />
+          <EntitySet Name="Ingredient" EntityType="RestaurantMenuModel.Ingredient" />
+          <EntitySet Name="Meal" EntityType="RestaurantMenuModel.Meal" />
+          <EntitySet Name="MealIngredient" EntityType="RestaurantMenuModel.MealIngredient" />
+          <EntitySet Name="MealTag" EntityType="RestaurantMenuModel.MealTag" />
+          <EntitySet Name="Tag" EntityType="RestaurantMenuModel.Tag" />
+          <AssociationSet Name="FK_Meal_Area" Association="RestaurantMenuModel.FK_Meal_Area">
+            <End Role="Area" EntitySet="Area" />
+            <End Role="Meal" EntitySet="Meal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Meal_Category" Association="RestaurantMenuModel.FK_Meal_Category">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Meal" EntitySet="Meal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MealIngredient_Ingredient" Association="RestaurantMenuModel.FK_MealIngredient_Ingredient">
+            <End Role="Ingredient" EntitySet="Ingredient" />
+            <End Role="MealIngredient" EntitySet="MealIngredient" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MealIngredient_Meal" Association="RestaurantMenuModel.FK_MealIngredient_Meal">
+            <End Role="Meal" EntitySet="Meal" />
+            <End Role="MealIngredient" EntitySet="MealIngredient" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MealTag_Meal" Association="RestaurantMenuModel.FK_MealTag_Meal">
+            <End Role="Meal" EntitySet="Meal" />
+            <End Role="MealTag" EntitySet="MealTag" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MealTag_Tag" Association="RestaurantMenuModel.FK_MealTag_Tag">
+            <End Role="Tag" EntitySet="Tag" />
+            <End Role="MealTag" EntitySet="MealTag" />
+          </AssociationSet>
+        </EntityContainer>
         <EntityType Name="Area">
           <Key>
             <PropertyRef Name="Id_Area" />
           </Key>
           <Property Name="Id_Area" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Meal" Relationship="Self.FK_Meal_Area" FromRole="Area" ToRole="Meal" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Meal" Relationship="RestaurantMenuModel.FK_Meal_Area" FromRole="Area" ToRole="Meal" />
         </EntityType>
         <EntityType Name="Category">
           <Key>
             <PropertyRef Name="Id_Category" />
           </Key>
           <Property Name="Id_Category" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Meal" Relationship="Self.FK_Meal_Category" FromRole="Category" ToRole="Meal" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Image" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Meal" Relationship="RestaurantMenuModel.FK_Meal_Category" FromRole="Category" ToRole="Meal" />
         </EntityType>
         <EntityType Name="Ingredient">
           <Key>
             <PropertyRef Name="Id_Ingredient" />
           </Key>
           <Property Name="Id_Ingredient" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Image" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="MealIngredient" Relationship="Self.FK_MealIngredient_Ingredient" FromRole="Ingredient" ToRole="MealIngredient" />
+          <NavigationProperty Name="MealIngredient" Relationship="RestaurantMenuModel.FK_MealIngredient_Ingredient" FromRole="Ingredient" ToRole="MealIngredient" />
         </EntityType>
         <EntityType Name="Meal">
           <Key>
             <PropertyRef Name="Id_Meal" />
           </Key>
           <Property Name="Id_Meal" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Preparation" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Image" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Preparation" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="id_Area" Type="Int32" Nullable="false" />
           <Property Name="id_Category" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Area" Relationship="Self.FK_Meal_Area" FromRole="Meal" ToRole="Area" />
-          <NavigationProperty Name="Category" Relationship="Self.FK_Meal_Category" FromRole="Meal" ToRole="Category" />
-          <NavigationProperty Name="MealIngredient" Relationship="Self.FK_MealIngredient_Meal" FromRole="Meal" ToRole="MealIngredient" />
-          <NavigationProperty Name="MealTag" Relationship="Self.FK_MealTag_Meal" FromRole="Meal" ToRole="MealTag" />
+          <NavigationProperty Name="Area" Relationship="RestaurantMenuModel.FK_Meal_Area" FromRole="Meal" ToRole="Area" />
+          <NavigationProperty Name="Category" Relationship="RestaurantMenuModel.FK_Meal_Category" FromRole="Meal" ToRole="Category" />
+          <NavigationProperty Name="MealIngredient" Relationship="RestaurantMenuModel.FK_MealIngredient_Meal" FromRole="Meal" ToRole="MealIngredient" />
+          <NavigationProperty Name="MealTag" Relationship="RestaurantMenuModel.FK_MealTag_Meal" FromRole="Meal" ToRole="MealTag" />
         </EntityType>
         <EntityType Name="MealIngredient">
           <Key>
             <PropertyRef Name="Id_MealIngredient" />
           </Key>
           <Property Name="Id_MealIngredient" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Quantity" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Quantity" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
           <Property Name="id_Meal" Type="Int32" Nullable="false" />
           <Property Name="id_Ingredient" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Ingredient" Relationship="Self.FK_MealIngredient_Ingredient" FromRole="MealIngredient" ToRole="Ingredient" />
-          <NavigationProperty Name="Meal" Relationship="Self.FK_MealIngredient_Meal" FromRole="MealIngredient" ToRole="Meal" />
+          <NavigationProperty Name="Ingredient" Relationship="RestaurantMenuModel.FK_MealIngredient_Ingredient" FromRole="MealIngredient" ToRole="Ingredient" />
+          <NavigationProperty Name="Meal" Relationship="RestaurantMenuModel.FK_MealIngredient_Meal" FromRole="MealIngredient" ToRole="Meal" />
         </EntityType>
         <EntityType Name="MealTag">
           <Key>
@@ -234,20 +266,20 @@
           <Property Name="Id_MealTag" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="id_Meal" Type="Int32" Nullable="false" />
           <Property Name="id_Tag" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Meal" Relationship="Self.FK_MealTag_Meal" FromRole="MealTag" ToRole="Meal" />
-          <NavigationProperty Name="Tag" Relationship="Self.FK_MealTag_Tag" FromRole="MealTag" ToRole="Tag" />
+          <NavigationProperty Name="Meal" Relationship="RestaurantMenuModel.FK_MealTag_Meal" FromRole="MealTag" ToRole="Meal" />
+          <NavigationProperty Name="Tag" Relationship="RestaurantMenuModel.FK_MealTag_Tag" FromRole="MealTag" ToRole="Tag" />
         </EntityType>
         <EntityType Name="Tag">
           <Key>
             <PropertyRef Name="Id_Tag" />
           </Key>
           <Property Name="Id_Tag" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="MealTag" Relationship="Self.FK_MealTag_Tag" FromRole="Tag" ToRole="MealTag" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="MealTag" Relationship="RestaurantMenuModel.FK_MealTag_Tag" FromRole="Tag" ToRole="MealTag" />
         </EntityType>
         <Association Name="FK_Meal_Area">
-          <End Role="Area" Type="Self.Area" Multiplicity="1" />
-          <End Role="Meal" Type="Self.Meal" Multiplicity="*" />
+          <End Type="RestaurantMenuModel.Area" Role="Area" Multiplicity="1" />
+          <End Type="RestaurantMenuModel.Meal" Role="Meal" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Area">
               <PropertyRef Name="Id_Area" />
@@ -258,8 +290,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Meal_Category">
-          <End Role="Category" Type="Self.Category" Multiplicity="1" />
-          <End Role="Meal" Type="Self.Meal" Multiplicity="*" />
+          <End Type="RestaurantMenuModel.Category" Role="Category" Multiplicity="1" />
+          <End Type="RestaurantMenuModel.Meal" Role="Meal" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Category">
               <PropertyRef Name="Id_Category" />
@@ -270,8 +302,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_MealIngredient_Ingredient">
-          <End Role="Ingredient" Type="Self.Ingredient" Multiplicity="1" />
-          <End Role="MealIngredient" Type="Self.MealIngredient" Multiplicity="*" />
+          <End Type="RestaurantMenuModel.Ingredient" Role="Ingredient" Multiplicity="1" />
+          <End Type="RestaurantMenuModel.MealIngredient" Role="MealIngredient" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Ingredient">
               <PropertyRef Name="Id_Ingredient" />
@@ -282,8 +314,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_MealIngredient_Meal">
-          <End Role="Meal" Type="Self.Meal" Multiplicity="1" />
-          <End Role="MealIngredient" Type="Self.MealIngredient" Multiplicity="*" />
+          <End Type="RestaurantMenuModel.Meal" Role="Meal" Multiplicity="1" />
+          <End Type="RestaurantMenuModel.MealIngredient" Role="MealIngredient" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Meal">
               <PropertyRef Name="Id_Meal" />
@@ -294,8 +326,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_MealTag_Meal">
-          <End Role="Meal" Type="Self.Meal" Multiplicity="1" />
-          <End Role="MealTag" Type="Self.MealTag" Multiplicity="*" />
+          <End Type="RestaurantMenuModel.Meal" Role="Meal" Multiplicity="1" />
+          <End Type="RestaurantMenuModel.MealTag" Role="MealTag" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Meal">
               <PropertyRef Name="Id_Meal" />
@@ -306,8 +338,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_MealTag_Tag">
-          <End Role="Tag" Type="Self.Tag" Multiplicity="1" />
-          <End Role="MealTag" Type="Self.MealTag" Multiplicity="*" />
+          <End Type="RestaurantMenuModel.Tag" Role="Tag" Multiplicity="1" />
+          <End Type="RestaurantMenuModel.MealTag" Role="MealTag" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Tag">
               <PropertyRef Name="Id_Tag" />
@@ -317,40 +349,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="RestaurantMenuContext" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Area" EntityType="Self.Area" />
-          <EntitySet Name="Category" EntityType="Self.Category" />
-          <EntitySet Name="Ingredient" EntityType="Self.Ingredient" />
-          <EntitySet Name="Meal" EntityType="Self.Meal" />
-          <EntitySet Name="MealIngredient" EntityType="Self.MealIngredient" />
-          <EntitySet Name="MealTag" EntityType="Self.MealTag" />
-          <EntitySet Name="Tag" EntityType="Self.Tag" />
-          <AssociationSet Name="FK_Meal_Area" Association="Self.FK_Meal_Area">
-            <End Role="Area" EntitySet="Area" />
-            <End Role="Meal" EntitySet="Meal" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Meal_Category" Association="Self.FK_Meal_Category">
-            <End Role="Category" EntitySet="Category" />
-            <End Role="Meal" EntitySet="Meal" />
-          </AssociationSet>
-          <AssociationSet Name="FK_MealIngredient_Ingredient" Association="Self.FK_MealIngredient_Ingredient">
-            <End Role="Ingredient" EntitySet="Ingredient" />
-            <End Role="MealIngredient" EntitySet="MealIngredient" />
-          </AssociationSet>
-          <AssociationSet Name="FK_MealIngredient_Meal" Association="Self.FK_MealIngredient_Meal">
-            <End Role="Meal" EntitySet="Meal" />
-            <End Role="MealIngredient" EntitySet="MealIngredient" />
-          </AssociationSet>
-          <AssociationSet Name="FK_MealTag_Meal" Association="Self.FK_MealTag_Meal">
-            <End Role="Meal" EntitySet="Meal" />
-            <End Role="MealTag" EntitySet="MealTag" />
-          </AssociationSet>
-          <AssociationSet Name="FK_MealTag_Tag" Association="Self.FK_MealTag_Tag">
-            <End Role="Tag" EntitySet="Tag" />
-            <End Role="MealTag" EntitySet="MealTag" />
-          </AssociationSet>
-        </EntityContainer>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -359,66 +358,66 @@
           <EntitySetMapping Name="Area">
             <EntityTypeMapping TypeName="RestaurantMenuModel.Area">
               <MappingFragment StoreEntitySet="Area">
-                <ScalarProperty Name="Id_Area" ColumnName="Id_Area" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id_Area" ColumnName="Id_Area" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Category">
             <EntityTypeMapping TypeName="RestaurantMenuModel.Category">
               <MappingFragment StoreEntitySet="Category">
-                <ScalarProperty Name="Id_Category" ColumnName="Id_Category" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id_Category" ColumnName="Id_Category" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Ingredient">
             <EntityTypeMapping TypeName="RestaurantMenuModel.Ingredient">
               <MappingFragment StoreEntitySet="Ingredient">
-                <ScalarProperty Name="Id_Ingredient" ColumnName="Id_Ingredient" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Image" ColumnName="Image" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id_Ingredient" ColumnName="Id_Ingredient" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Meal">
             <EntityTypeMapping TypeName="RestaurantMenuModel.Meal">
               <MappingFragment StoreEntitySet="Meal">
-                <ScalarProperty Name="Id_Meal" ColumnName="Id_Meal" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Image" ColumnName="Image" />
-                <ScalarProperty Name="Preparation" ColumnName="Preparation" />
-                <ScalarProperty Name="id_Area" ColumnName="id_Area" />
                 <ScalarProperty Name="id_Category" ColumnName="id_Category" />
+                <ScalarProperty Name="id_Area" ColumnName="id_Area" />
+                <ScalarProperty Name="Preparation" ColumnName="Preparation" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id_Meal" ColumnName="Id_Meal" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="MealIngredient">
             <EntityTypeMapping TypeName="RestaurantMenuModel.MealIngredient">
               <MappingFragment StoreEntitySet="MealIngredient">
-                <ScalarProperty Name="Id_MealIngredient" ColumnName="Id_MealIngredient" />
-                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
-                <ScalarProperty Name="id_Meal" ColumnName="id_Meal" />
                 <ScalarProperty Name="id_Ingredient" ColumnName="id_Ingredient" />
+                <ScalarProperty Name="id_Meal" ColumnName="id_Meal" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Id_MealIngredient" ColumnName="Id_MealIngredient" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="MealTag">
             <EntityTypeMapping TypeName="RestaurantMenuModel.MealTag">
               <MappingFragment StoreEntitySet="MealTag">
-                <ScalarProperty Name="Id_MealTag" ColumnName="Id_MealTag" />
-                <ScalarProperty Name="id_Meal" ColumnName="id_Meal" />
                 <ScalarProperty Name="id_Tag" ColumnName="id_Tag" />
+                <ScalarProperty Name="id_Meal" ColumnName="id_Meal" />
+                <ScalarProperty Name="Id_MealTag" ColumnName="Id_MealTag" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Tag">
             <EntityTypeMapping TypeName="RestaurantMenuModel.Tag">
               <MappingFragment StoreEntitySet="Tag">
-                <ScalarProperty Name="Id_Tag" ColumnName="Id_Tag" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id_Tag" ColumnName="Id_Tag" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

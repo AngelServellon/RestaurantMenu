@@ -4,66 +4,66 @@
     <EntitySetMapping Name="Area">
       <EntityTypeMapping TypeName="RestaurantMenuModel.Area">
         <MappingFragment StoreEntitySet="Area">
-          <ScalarProperty Name="Id_Area" ColumnName="Id_Area" />
           <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id_Area" ColumnName="Id_Area" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Category">
       <EntityTypeMapping TypeName="RestaurantMenuModel.Category">
         <MappingFragment StoreEntitySet="Category">
-          <ScalarProperty Name="Id_Category" ColumnName="Id_Category" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id_Category" ColumnName="Id_Category" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Ingredient">
       <EntityTypeMapping TypeName="RestaurantMenuModel.Ingredient">
         <MappingFragment StoreEntitySet="Ingredient">
-          <ScalarProperty Name="Id_Ingredient" ColumnName="Id_Ingredient" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="Image" ColumnName="Image" />
           <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id_Ingredient" ColumnName="Id_Ingredient" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Meal">
       <EntityTypeMapping TypeName="RestaurantMenuModel.Meal">
         <MappingFragment StoreEntitySet="Meal">
-          <ScalarProperty Name="Id_Meal" ColumnName="Id_Meal" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="Image" ColumnName="Image" />
-          <ScalarProperty Name="Preparation" ColumnName="Preparation" />
-          <ScalarProperty Name="id_Area" ColumnName="id_Area" />
           <ScalarProperty Name="id_Category" ColumnName="id_Category" />
+          <ScalarProperty Name="id_Area" ColumnName="id_Area" />
+          <ScalarProperty Name="Preparation" ColumnName="Preparation" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id_Meal" ColumnName="Id_Meal" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="MealIngredient">
       <EntityTypeMapping TypeName="RestaurantMenuModel.MealIngredient">
         <MappingFragment StoreEntitySet="MealIngredient">
-          <ScalarProperty Name="Id_MealIngredient" ColumnName="Id_MealIngredient" />
-          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
-          <ScalarProperty Name="id_Meal" ColumnName="id_Meal" />
           <ScalarProperty Name="id_Ingredient" ColumnName="id_Ingredient" />
+          <ScalarProperty Name="id_Meal" ColumnName="id_Meal" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="Id_MealIngredient" ColumnName="Id_MealIngredient" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="MealTag">
       <EntityTypeMapping TypeName="RestaurantMenuModel.MealTag">
         <MappingFragment StoreEntitySet="MealTag">
-          <ScalarProperty Name="Id_MealTag" ColumnName="Id_MealTag" />
-          <ScalarProperty Name="id_Meal" ColumnName="id_Meal" />
           <ScalarProperty Name="id_Tag" ColumnName="id_Tag" />
+          <ScalarProperty Name="id_Meal" ColumnName="id_Meal" />
+          <ScalarProperty Name="Id_MealTag" ColumnName="Id_MealTag" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Tag">
       <EntityTypeMapping TypeName="RestaurantMenuModel.Tag">
         <MappingFragment StoreEntitySet="Tag">
-          <ScalarProperty Name="Id_Tag" ColumnName="Id_Tag" />
           <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id_Tag" ColumnName="Id_Tag" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

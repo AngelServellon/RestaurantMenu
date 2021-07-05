@@ -1,4 +1,4 @@
-﻿@model IEnumerable<RestaurantMenu.Models.Meal>
+﻿@model IEnumerable<RestaurantMenu.Models.MealIngredient>
 
 @{
     ViewBag.Title = "IngredientMeals";
@@ -13,8 +13,8 @@
     @foreach (var item in Model)
     {
         <div class="col-sm-12 col-md-3">
-            <img class="img-responsive" src="@RestaurantMenu.Controllers.MealController.MealImage(item.Id_Meal)" alt="Alternate Text" />
-            <h3 class="text-center">@Html.ActionLink(@RestaurantMenu.Controllers.MealController.MealName(item.Id_Meal), "DetallesMeal", "Category", new { id = item.Id_Meal }, null)</h3>
+            <img class="img-responsive" src="@RestaurantMenu.Controllers.MealController.MealImage(item.id_Meal)" alt="Alternate Text" />
+            <h3 class="text-center">@Html.ActionLink(@RestaurantMenu.Controllers.MealController.MealName(item.id_Meal), "DetallesMeal", "Category", new { id = item.id_Meal }, null)</h3>
         </div>
     }
 </div>

@@ -1,0 +1,8 @@
+﻿@model IEnumerable<RestaurantMenu.Models.Ingredient>
+
+<select class="form-control" id="id_Ingredient" name="id_Ingredient">
+    @foreach (var item in Model)
+    {
+        <option value="@item.Id_Ingredient">@item.Name</option>
+    }
+</select>

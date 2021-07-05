@@ -77,7 +77,85 @@ namespace RestaurantMenu.Controllers
                 return db.Tag.Find(id_tag).Name;
             }
         }
-
-
+        //-----------------------------------------------------------------------------------
+        //Agregar comida
+        public ActionResult AgregarMeal()
+        {
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AgregarMeal(Meal meal)
+        {
+            if (ModelState.IsValid)
+            {
+                using (var db = new RestaurantMenuContext())
+                {
+                    db.Meal.Add(meal);
+                    db.SaveChanges();
+                    return RedirectToAction("AgregarIngredientes");
+                }
+            }
+            else
+            {
+                return View();
+            }
+        }
+        //Listar categorias
+        public ActionResult ListarCategorias()
+        {
+            using (var db = new RestaurantMenuContext())
+            {
+                return PartialView(db.Category.ToList());
+            }
+        }
+        //Listar areas
+        public ActionResult ListarAreas()
+        {
+            using (var db = new RestaurantMenuContext())
+            {
+                return PartialView(db.Area.ToList());
+            }
+        }
+        //Agregar ingredientes al crear una nueva comida
+        public ActionResult AgregarIngredientes(string message= "")
+        {
+            ViewBag.Message = message;
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AgregarIngredientes(MealIngredient mi)
+        {
+            if (ModelState.IsValid)
+            {
+                using (var db = new RestaurantMenuContext())
+                {
+                    db.MealIngredient.Add(mi);
+                    db.SaveChanges();
+                    return RedirectToAction("AgregarIngredientes", new { message = "Ingredient added successfully, do you want to add another?" });
+                }
+            }
+            else
+            {
+                return View();
+            }
+        }
+        //Listar las comidas
+        public ActionResult ListarComidas()
+        {
+            using (var db = new RestaurantMenuContext())
+            {
+                return PartialView(db.Meal.ToList());
+            }
+        }
+        //Listar los ingredientes
+        public ActionResult ListarIngredientes()
+        {
+            using (var db = new RestaurantMenuContext())
+            {
+                return PartialView(db.Ingredient.ToList());
+            }
+        }
     }
 }

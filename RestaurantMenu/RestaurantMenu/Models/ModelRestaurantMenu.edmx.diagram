@@ -5,19 +5,19 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="54fcfa114a60437e88f4fb1345767264" Name="Diagram1">
-        <EntityTypeShape EntityType="RestaurantMenuModel.Area" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
-        <EntityTypeShape EntityType="RestaurantMenuModel.Category" Width="1.5" PointX="0.75" PointY="0.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="RestaurantMenuModel.Ingredient" Width="1.5" PointX="3" PointY="9.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="RestaurantMenuModel.Meal" Width="1.5" PointX="3" PointY="3.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="RestaurantMenuModel.MealIngredient" Width="1.5" PointX="5.25" PointY="3.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="RestaurantMenuModel.MealTag" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="RestaurantMenuModel.Tag" Width="1.5" PointX="3" PointY="7.125" IsExpanded="true" />
-        <AssociationConnector Association="RestaurantMenuModel.FK_Meal_Area" ManuallyRouted="false" />
-        <AssociationConnector Association="RestaurantMenuModel.FK_Meal_Category" ManuallyRouted="false" />
-        <AssociationConnector Association="RestaurantMenuModel.FK_MealIngredient_Ingredient" ManuallyRouted="false" />
-        <AssociationConnector Association="RestaurantMenuModel.FK_MealIngredient_Meal" ManuallyRouted="false" />
-        <AssociationConnector Association="RestaurantMenuModel.FK_MealTag_Meal" ManuallyRouted="false" />
-        <AssociationConnector Association="RestaurantMenuModel.FK_MealTag_Tag" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="RestaurantMenuModel.Area" Width="1.5" PointX="0.75" PointY="1" />
+        <EntityTypeShape EntityType="RestaurantMenuModel.Category" Width="1.5" PointX="0.75" PointY="3.875" />
+        <EntityTypeShape EntityType="RestaurantMenuModel.Ingredient" Width="1.5" PointX="3" PointY="9.75" />
+        <EntityTypeShape EntityType="RestaurantMenuModel.Meal" Width="1.5" PointX="3" PointY="3.25" />
+        <EntityTypeShape EntityType="RestaurantMenuModel.MealIngredient" Width="1.5" PointX="5.25" PointY="3.625" />
+        <EntityTypeShape EntityType="RestaurantMenuModel.MealTag" Width="1.5" PointX="5.25" PointY="0.75" />
+        <EntityTypeShape EntityType="RestaurantMenuModel.Tag" Width="1.5" PointX="3" PointY="7.125" />
+        <AssociationConnector Association="RestaurantMenuModel.FK_Meal_Area" />
+        <AssociationConnector Association="RestaurantMenuModel.FK_Meal_Category" />
+        <AssociationConnector Association="RestaurantMenuModel.FK_MealIngredient_Ingredient" />
+        <AssociationConnector Association="RestaurantMenuModel.FK_MealIngredient_Meal" />
+        <AssociationConnector Association="RestaurantMenuModel.FK_MealTag_Meal" />
+        <AssociationConnector Association="RestaurantMenuModel.FK_MealTag_Tag" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -13,7 +13,7 @@ namespace RestaurantMenu.Controllers
         public ActionResult Index()
         {
             RestaurantMenuContext db = new RestaurantMenuContext();
-            return View(db.MealIngredient.ToList());
+            return View(db.Ingredient.ToList());
         }
         //Obtener imagen del ingrediente
         public static string IngredientImage(int id)
@@ -36,8 +36,32 @@ namespace RestaurantMenu.Controllers
         {
             using (var db = new RestaurantMenuContext())
             {
-                List<Meal> meals = db.Meal.Where(m => m.Id_Meal == id).ToList();
+                List<MealIngredient> meals = db.MealIngredient.Where(m => m.id_Ingredient == id).ToList();
                 return View(meals);
+            }
+        }
+        //Crear un nuevo ingrediente-------------------------------------------------
+        public ActionResult CrearIngrediente()
+        {
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CrearIngrediente(Ingredient ingredient)
+        {
+            if (ModelState.IsValid)
+            {
+                using (var db = new RestaurantMenuContext())
+                {
+                    db.Ingredient.Add(ingredient);
+                    db.SaveChanges();
+                    return RedirectToAction("AgregarIngredientes", "Meal");
+
+                }
+            }
+            else
+            {
+                return View();
             }
         }
     }
